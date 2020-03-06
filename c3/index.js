@@ -1,10 +1,16 @@
 const express = require('express');
 const handlers = require('./handlers');
+const bodyParser = require('body-parser');
 //application object
 let app = express();
 
+//addding middleware
+app.use(bodyParser.urlencoded({extended:true}));
+
 //route
 app.get("/",handlers.index);
+
+app.post("/",handlers.post);
 
 app.get("/pero", handlers.pero);
 
