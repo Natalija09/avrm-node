@@ -27,7 +27,7 @@ app.get('/ime/:ime',(req,res)=>{
     res.render('ime',data);
 });
 app.get('/students',(req,res)=>{
-fs.readFile('studenti.json', (err,data)=>{
+fs.readFile('studenti.json', 'utf8', (err,data)=>{
     if(err){
         res.status(400).send("bad request");
         return;
@@ -50,13 +50,35 @@ app.post('/students',(req,res)=>{
         prosek: req.params.prosek,
     });
     data = JSON.stringify(data)
-    fs.writeFile('./studenti.json', data, (err)=>{
+    fs.writeFile('./studenti.json','utf8', data, (err)=>{
         if(err){
             res.status(400).send('bad request');
             return;
         }
         res.redirect('/students')
     });
+});
+
+app.get('/students/delete/:id',(req,res)=>{
+    fs.readFile('studenti.json','uff8', (err,data)=>{
+        if(err){
+            res.status(400).send("bad request");
+            return;
+        }
+        data = JSON.parse(data)
+    data =data.filter((v,i)=>{
+        if(i != req.params.id){
+            return v;
+        }
+    });
+    
+    data = JSON.stringify(data);
+    fs.writeFile('./studenti.json', data, (err)=>{
+        if(err){
+            res.status(400).send('bad request')
+        }
+    })
+
 });
 
 app.listen(8080,(err)=>{
