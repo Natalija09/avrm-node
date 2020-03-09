@@ -6,8 +6,12 @@ const fs = require ('fs');
 
 
 var app = express();
+
 app.set('view engine','hbs');
+hbs.registerPartials(`${__dirname}/views/partials`)
+
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static('public'))
 
 app.get('/',(req,res)=>{
     //res.send('ok');
@@ -23,7 +27,7 @@ app.get('/ime/:ime',(req,res)=>{
     res.render('ime',data);
 });
 app.get('/students',(req,res)=>{
-fs.readFile('studenti.json','utf8', (err,data)=>{
+fs.readFile('studenti.json', (err,data)=>{
     if(err){
         res.status(400).send("bad request");
         return;
@@ -33,6 +37,27 @@ fs.readFile('studenti.json','utf8', (err,data)=>{
     };
     res.render('students',out);
 });
+});
+app.post('/students',(req,res)=>{
+    if(err){
+        res.status(400).send('bad request');
+        return;
+    }
+    data = JSON.parse(data);
+    data.push({
+        ime: req.params.ime,
+        prezime: req.params.prezime,
+        prosek: req.params.prosek,
+    });
+    data = JSON.stringify(data)
+    fs.writeFile('./studenti.json', data, (err)=>{
+        if(err){
+            res.status(400).send('bad request');
+            return;
+        }
+        res.redirect('/students')
+    });
+});
 
 app.listen(8080,(err)=>{
     if(err){
@@ -40,5 +65,5 @@ app.listen(8080,(err)=>{
         return;
     }
     console.log('server started successfully')
-});
+
 });

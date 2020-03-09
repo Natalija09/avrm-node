@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 //route
 app.get("/",handlers.index);
 
-app.post("/",handlers.post);
+app.post("/",handlers.posst);
 
 app.get("/pero", handlers.pero);
 
