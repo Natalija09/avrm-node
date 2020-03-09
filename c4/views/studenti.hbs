@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial>
+        <title>Document</title>
+    </head>
+    <body>
+        <table border="1" width="50%">
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Prosek</th>
+            </tr>
+            {{#each studenti}}
+            <tr>
+                <td>{{this.ime}}</td>
+                <td>{{this.prezime}}</td>
+                <td>{{this.prosek}}</td>
+            </tr>
+            {{/each}}
+
+
+
+
+
+
+
+
+
+        </table>
+    </body>
+
+</html>

@@ -1,13 +1,13 @@
 [
-    {"ime":"Pero","prezime":"blagoevski","prosek":8.2},
+    {"ime":"Pero","prezime":"blagoevski"},
 
-    {"ime":"lilija","prezime":"orevska","prosek":8.7},
+    {"ime":"lilija","prezime":"orevska"},
 
-    {"ime":"mila","prezime":"bademovska","prosek":7.2},
+    {"ime":"mila","prezime":"bademovska"},
 
-    {"ime":"tilasa","prezime":"kikiritkovska","prosek":9.2},
+    {"ime":"tilasa","prezime":"kikiritkovska"},
 
-    {"ime":"kilan","prezime":"tikvarovska","prosek":9.5},
+    {"ime":"kilan","prezime":"tikvarovska"},
 
-    {"ime":"silani","prezime":"leblebiska","prosek":9.5}
+    {"ime":"silani","prezime":"leblebiska"}
 ]
