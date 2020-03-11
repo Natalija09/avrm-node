@@ -2,11 +2,33 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link rel="stylesheet" href="/styles/main.css">
     </head>
     <body>
         {{> header}}
+         <form method="post" action="/students">
+        <label>
+            Ime:<br/>
+            <input type="text" name="ime">
+        </label>
+        <br/>
+        <label>
+            Prezime:<br/>
+            <input type="text" name="prezime">
+        </label>
+        <br/>
+        <label>
+            Prosek:<br/>
+            <input type="number" name="prosek">
+        </label>
+        <br/>
+        <br/>
+        <button type="submit">Submit</button>
+    </form>
+    <hr/>
+
         <table border="1" width="50%">
             <tr>
                 <th>Ime</th>
@@ -24,16 +46,7 @@
                 </td>
             </tr>
             {{/each}}
-
-
-
-
-
-
-
-
-
-        </table>
+</table>
     </body>
 
 </html>

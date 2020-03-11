@@ -1,7 +1,8 @@
+const fs = require ('fs');
 const express = require('express');
 const hbs = require('hbs');
 const bodyParser = require ('body-parser');
-const fs = require ('fs');
+
 
 
 
@@ -11,7 +12,7 @@ app.set('view engine','hbs');
 hbs.registerPartials(`${__dirname}/views/partials`)
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static('public'))
+app.use(express.static(`${__dirname}/public`));
 
 app.get('/',(req,res)=>{
     //res.send('ok');
@@ -27,7 +28,7 @@ app.get('/ime/:ime',(req,res)=>{
     res.render('ime',data);
 });
 app.get('/students',(req,res)=>{
-fs.readFile('studenti.json', 'utf8', (err,data)=>{
+fs.readFile('./studenti.json', 'utf8', (err,data)=>{
     if(err){
         res.status(400).send("bad request");
         return;
@@ -39,18 +40,19 @@ fs.readFile('studenti.json', 'utf8', (err,data)=>{
 });
 });
 app.post('/students',(req,res)=>{
+    fs.readFile('./studenti.json', 'utf8', (err, data) => {
     if(err){
         res.status(400).send('bad request');
         return;
     }
     data = JSON.parse(data);
     data.push({
-        ime: req.params.ime,
-        prezime: req.params.prezime,
-        prosek: req.params.prosek,
+        ime: req.body.ime,
+        prezime: req.body.prezime,
+        prosek: req.body.prosek,
     });
-    data = JSON.stringify(data)
-    fs.writeFile('./studenti.json','utf8', data, (err)=>{
+    data = JSON.stringify(data);
+    fs.writeFile('./studenti.json', data, (err)=>{
         if(err){
             res.status(400).send('bad request');
             return;
@@ -58,15 +60,16 @@ app.post('/students',(req,res)=>{
         res.redirect('/students')
     });
 });
+});
 
 app.get('/students/delete/:id',(req,res)=>{
-    fs.readFile('studenti.json','uff8', (err,data)=>{
+    fs.readFile('./studenti.json','utf8', (err,data)=>{
         if(err){
-            res.status(400).send("bad request");
+            res.status(400).send('bad request');
             return;
         }
         data = JSON.parse(data)
-    data =data.filter((v,i)=>{
+        data =data.filter((v,i)=>{
         if(i != req.params.id){
             return v;
         }
@@ -77,8 +80,9 @@ app.get('/students/delete/:id',(req,res)=>{
         if(err){
             res.status(400).send('bad request')
         }
-    })
-
+        res.redirect('/students')
+    });
+    });
 });
 
 app.listen(8080,(err)=>{
@@ -89,4 +93,4 @@ app.listen(8080,(err)=>{
     console.log('server started successfully')
 
 });
-});
+

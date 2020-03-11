@@ -1,9 +1,1 @@
-[
-    {"ime":"Pero","prezime":"blagoevski","prosek":8.2},
-    {"ime":"lilija","prezime":"orevska","prosek":8.7},
-    {"ime":"mila","prezime":"bademovska","prosek":7.2},
-    {"ime":"tilasa","prezime":"kikiritkovska","prosek":9.2},
-    {"ime":"kilan","prezime":"tikvarovska","prosek":9.5},
-    {"ime":"silani","prezime":"leblebiska","prosek":9.5}
-
-]
+[{"ime":"Pero","prezime":"blagoevski","prosek":8.2},{"ime":"lilija","prezime":"orevska","prosek":8.7},{"ime":"mila","prezime":"bademovska","prosek":7.2},{"ime":"tilasa","prezime":"kikiritkovska","prosek":9.2},{"ime":"kilan","prezime":"tikvarovska","prosek":9.5},{"ime":"silani","prezime":"leblebiska","prosek":9.5},{"ime":"ica","prezime":"micovska","prosek":"8"}]
